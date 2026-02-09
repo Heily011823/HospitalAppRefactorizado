@@ -1,0 +1,6 @@
+======================== REPORTE DE FARMACIA ===========================
+Hospital Asociado: Hospital San José St. Bonaventure
+Dirección del Hospital: Calle 123
+Inventario de Medicamentos:
+No hay medicamentos en el inventario.
+------------------------------------

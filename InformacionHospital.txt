@@ -1,0 +1,21 @@
+================== INFORMACIÓN DEL HOSPITAL =======================
+Nombre: Hospital San José St. Bonaventure
+Dirección: Calle 123
+Teléfono: 3001234567
+
+Gerente: 
+Nombre: Laura Pérez
+Documento: 123456789
+Edad: 40
+Carrera: Administración Hospitalaria
+
+Logo: logo.png
+Presupuesto: $1000000,00
+Meta de Ventas Anual: $500,00
+Fecha de Fundación: 2020-01-01
+Estado: Activo
+
+Localización: 
+Latitud: 5.0703
+Longitud: -75.5138
+===================================================================
