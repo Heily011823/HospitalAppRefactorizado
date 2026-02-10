@@ -21,6 +21,12 @@ public class EmpleadoSalud extends Empleado {
      * Número de horas trabajadas por el empleado.
      */
     private int horasTrabajadas;
+    
+    /**
+    * Porcentaje de incremento salarial aplicado por cada
+    * hora trabajada (1.2%).
+    */
+    private static final double INCREMENTO_POR_HORA_SALUD = 0.012;
 
     /**
      * Constructor para crear un empleado del área de salud.
@@ -82,7 +88,7 @@ public class EmpleadoSalud extends Empleado {
      */
     @Override
     public double calcularSalario() {
-        return getSalarioBase() + (getSalarioBase() * 0.012 * horasTrabajadas);
+        return getSalarioBase() + (getSalarioBase() * INCREMENTO_POR_HORA_SALUD * horasTrabajadas);
     }
 
     /**
