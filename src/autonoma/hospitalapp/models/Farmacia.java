@@ -79,12 +79,26 @@ public class Farmacia {
         if (hospital.visualizarEstado().equals("El hospital está en quiebra.")) {
             throw new HospitalEnQuiebraException();
         }
-
-        double costoTotal = medicamento.getCosto() * cantidad;
-        medicamento.calcularPrecioVenta(); 
+        
+        double costoTotal = oganizarPreciosMed(medicamento, cantidad);
         hospital.descontarDelPresupuesto(costoTotal);
         inventario.agregarMedicamento(medicamento, cantidad);
         System.out.println("Medicamento " + medicamento.getNombre() + " agregado al inventario.");
+    }
+    
+     /**
+     * se organiza el precio total los medicamentos que s evan a comprar 
+     * y los medicamentso se ponen en precio de venta 
+     * 
+     * @param medicamento El medicamento a agregar
+     * @param cantidad La cantidad del medicamento a agregar
+    */
+    
+    public double oganizarPreciosMed(Medicamento medicamento, int cantidad){
+        
+        double costoTotal = medicamento.getCosto() * cantidad;
+        medicamento.calcularPrecioVenta(); 
+        return costoTotal;    
     }
 
     /**
