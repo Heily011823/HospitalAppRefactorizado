@@ -6,6 +6,7 @@ package autonoma.hospitalapp.models;
 
 import autonoma.hospitalapp.exceptions.HospitalEnQuiebraException;
 import autonoma.hospitalapp.exceptions.MedicamentoNoEncontradoException;
+import autonoma.hospitalapp.exceptions.PresupuestoNegativoException;
 import java.util.ArrayList;
 
 /**
@@ -75,7 +76,7 @@ public class Farmacia {
      * @param cantidad La cantidad del medicamento a agregar
      * @throws HospitalEnQuiebraException Si el hospital está en quiebra
      */
-    public void agregarMedicamento(Medicamento medicamento, int cantidad) throws HospitalEnQuiebraException {
+    public void agregarMedicamento(Medicamento medicamento, int cantidad) throws HospitalEnQuiebraException, PresupuestoNegativoException {
         if (hospital.visualizarEstado().equals("El hospital está en quiebra.")) {
             throw new HospitalEnQuiebraException();
         }
