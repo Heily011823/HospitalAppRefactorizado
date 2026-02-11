@@ -4,6 +4,7 @@
  */
 package autonoma.hospitalapp.main;
 
+import autonoma.hospitalapp.models.Documento;
 import autonoma.hospitalapp.models.Empleado;
 import autonoma.hospitalapp.models.Farmacia;
 import autonoma.hospitalapp.models.Gerente;
@@ -26,7 +27,14 @@ public class HospitalApp {
     public static void main(String[] args) {
         Localizacion localizacion = new Localizacion(5.0703, -75.5138 );
 
-        Gerente gerente = new Gerente("Laura Pérez", "123456789", 40, "Administración Hospitalaria");
+    Documento documento = new Documento("123456789");
+
+    Gerente gerente = new Gerente(
+        "Laura Pérez",
+        documento,
+        40,
+        "Administración Hospitalaria"
+    );
         Inventario inventario = new Inventario("INV-001", 2024);
 
        
