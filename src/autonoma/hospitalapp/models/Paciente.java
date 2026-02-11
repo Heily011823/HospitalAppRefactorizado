@@ -78,8 +78,10 @@ public class Paciente {
         // Conversión segura de String a Enum 
         this.estadoPaciente = EstadoPaciente.valueOf(estadoPaciente.toUpperCase());
 
-        this.enfermedades = enfermedades;
-        this.medicinas = medicinas;
+        //Defensive Programming
+        this.enfermedades = (enfermedades != null) ? enfermedades : new ArrayList<>();
+        this.medicinas = (medicinas != null) ? medicinas : new ArrayList<>();
+
     }
 
     public String getNombre() {
