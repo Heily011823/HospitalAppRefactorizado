@@ -38,10 +38,21 @@ public class Nomina {
      * @param totalPagado Monto total pagado.
      */
     public Nomina(String id, LocalDate fecha, double totalPagado) {
-        this.id = id;
-        this.fecha = fecha;
-        this.totalPagado = totalPagado;
+    if (id == null || id.isBlank()) {
+        throw new IllegalArgumentException("El id no puede ser vacío");
     }
+    if (fecha == null) {
+        throw new IllegalArgumentException("La fecha no puede ser null");
+    }
+    if (totalPagado < 0) {
+        throw new IllegalArgumentException("El total pagado no puede ser negativo");
+    }
+
+    this.id = id;
+    this.fecha = fecha;
+    this.totalPagado = totalPagado;
+}
+
 
     /**
      * Obtiene el identificador del empleado.

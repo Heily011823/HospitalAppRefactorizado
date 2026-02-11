@@ -358,7 +358,7 @@ public void descontarDelPresupuesto(double monto) throws PresupuestoNegativoExce
     * @param medicamento El medicamento a comprar.
     * @param cantidad La cantidad a comprar.
     */
-    public void comprarMedicamento(Medicamento medicamento, int cantidad) {
+    public void comprarMedicamento(Medicamento medicamento, int cantidad) throws PresupuestoNegativoException {
         try {
            
             if (visualizarEstado().equals("Quiebra")) {
