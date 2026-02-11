@@ -20,7 +20,7 @@ public class Gerente {
     /**
      * Documento de identidad del gerente.
      */
-    private String documento;
+    private Documento documento;
     
     /**
      * Edad del gerente.
@@ -32,14 +32,14 @@ public class Gerente {
      */
     private String carrera;
 
-    /**
+    /**s
      * Constructor de la clase Gerente
      * @param nombre Es el nombre del gerente.
      * @param documento Es el documento del gerente.
      * @param edad Es la edad del gerente.
      * @param carrera Es la carrera del gerente.
      */
-    public Gerente(String nombre, String documento, int edad, String carrera) {
+    public Gerente(String nombre, Documento documento, int edad, String carrera) {
         this.nombre = nombre;
         this.documento = documento;
         this.edad = edad;
@@ -69,7 +69,7 @@ public class Gerente {
      *
      * @return Retorna el documento de la persona.
      */
-    public String getDocumento() {
+    public Documento getDocumento() {
         return documento;
     }
 
@@ -78,7 +78,7 @@ public class Gerente {
      *
      * @param documento Es el documento que se asignará a la persona.
      */
-    public void setDocumento(String documento) {
+    public void setDocumento(Documento documento) {
         this.documento = documento;
     }
 

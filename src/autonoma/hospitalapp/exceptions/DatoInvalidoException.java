@@ -13,8 +13,16 @@ package autonoma.hospitalapp.exceptions;
  */
 public class DatoInvalidoException  extends RuntimeException{
 
-    public DatoInvalidoException() {
+    public DatoInvalidoException(String par) {
         super("Los datos no pueden ser negativos");
+    }
+    /**
+     * Constructor con mensaje personalizado.
+     * 
+     * @param mensaje descripción del error
+     */
+    public DatoInvalidoException(String mensaje) {
+        super(mensaje);
     }
     
     

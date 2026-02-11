@@ -37,7 +37,7 @@ public class GenerarReportePacientes extends javax.swing.JDialog {
             System.out.println("Imagen no encontrada");
             
         }
-        InformacionPacientes.setText(reporte.generarReportePacientes());
+        InformacionPacientes.setText(reporte.generarReporteDePacientes());
         InformacionPacientes.setEditable(false);
     }
 

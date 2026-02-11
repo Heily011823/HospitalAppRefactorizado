@@ -37,7 +37,7 @@ public class GenerarReporteFarmacia extends javax.swing.JDialog {
             System.out.println("Imagen no encontrada");
             
         }
-        InformacionFarmacia.setText(reporte.generarReporteFarmacia());
+        InformacionFarmacia.setText(reporte.generarReporteDeFarmacia());
         InformacionFarmacia.setEditable(false);
     }
 
