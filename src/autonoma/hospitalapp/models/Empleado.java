@@ -4,6 +4,8 @@
  */
 package autonoma.hospitalapp.models;
 
+import autonoma.hospitalapp.exceptions.DatoInvalidoException;
+
 /*
 * @author Heily Yohana Rios Ayala <heilyy.riosa@autonoma.edu.co>
  * @since 20250414
@@ -37,14 +39,17 @@ public abstract class Empleado {
      * @param documento Documento de identidad del empleado
      * @param edad Edad del empleado
      * @param salarioBase Salario base del empleado
+     * @throws DatoInvalidoException si la edad o el salario son valores negativos.
      */
-    public Empleado(String nombre, String documento, int edad, double salarioBase) {
-        this.nombre = nombre;
-        this.documento = documento;
-        this.edad = edad;
-        this.salarioBase = salarioBase;
+public Empleado(String nombre, String documento, int edad, double salarioBase) {
+    if (edad < 0 || salarioBase < 0) {
+        throw new DatoInvalidoException("La edad (" + edad + ") y el salario (" + salarioBase + ") no pueden ser negativos.");
     }
-
+    this.nombre = nombre;
+    this.documento = documento;
+    this.edad = edad;
+    this.salarioBase = salarioBase;
+}
     /**
      * Obtiene el nombre del empleado.
      * 

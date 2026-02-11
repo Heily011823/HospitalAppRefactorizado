@@ -7,6 +7,7 @@ package autonoma.hospitalapp.models;
 import autonoma.hospitalapp.exceptions.HospitalEnQuiebraException;
 import autonoma.hospitalapp.exceptions.MedicamentoNoEncontradoException;
 import autonoma.hospitalapp.exceptions.PacienteNoEncontradoException;
+import autonoma.hospitalapp.exceptions.PresupuestoNegativoException;
 import java.io.IOException;
 import java.time.LocalDate;
 import java.util.ArrayList;
@@ -330,19 +331,18 @@ public class Hospital {
         }
     }
 
-    /**
-    * Descuenta un valor del presupuesto del hospital.
-    *
-    * @param valor El valor a descontar.
-    */
-    public void descontarDelPresupuesto(double valor) {
-        if (presupuesto >= valor) {
-            presupuesto -= valor;
-        } else {
-            System.out.println("No hay suficiente presupuesto.");
-        }
+   /**
+ * @param monto El valor económico a deducir del presupuesto actual.
+ * @throws PresupuestoNegativoException Si el monto a descontar es mayor al presupuesto 
+ * actual, provocando el estado de quiebra.
+ */
+public void descontarDelPresupuesto(double monto) throws PresupuestoNegativoException {
+    if ((this.presupuesto - monto) < 0) {
+        this.estadoHospital = false; // El hospital entra en quiebra
+        throw new PresupuestoNegativoException();
     }
-
+    this.presupuesto -= monto;
+}
     /**
     * Devuelve una representación textual del estado del hospital.
     *
