@@ -17,6 +17,11 @@ public class EmpleadoOperativo extends Empleado {
      * Área del hospital en la que trabaja el empleado operativo.
      */
     private String area;
+    
+    /**
+    * Porcentaje de incremento aplicado al salario base del empleado operativo (20%).
+    */
+    private static final double INCREMENTO_SALARIO_OPERATIVO = 0.20;
 
     /**
      * Constructor que inicializa los atributos del empleado operativo.
@@ -58,7 +63,7 @@ public class EmpleadoOperativo extends Empleado {
      */
     @Override
     public double calcularSalario() {
-        return getSalarioBase() * 1.2;
+        return getSalarioBase() * (1 + INCREMENTO_SALARIO_OPERATIVO);
     }
 
     /**

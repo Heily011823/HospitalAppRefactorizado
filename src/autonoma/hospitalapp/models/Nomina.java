@@ -96,4 +96,29 @@ public class Nomina {
     public void setTotalPagado(double totalPagado) {
         this.totalPagado = totalPagado;
     }
+    
+    /**
+     * Genera un resumen con la información de la nómina.
+     * @return Retorna la información de la nomina.
+     */
+    public String generarDetalleNomina() {
+        return "Empleado: " + id +
+               ", Fecha: " + fecha +
+               ", Total Pagado: $" + totalPagado;
+    }
+
+    /**
+     * Valida si el pago de la nómina es correcto.
+     * @return Retorna true si el pago es válido y false si no es válido.
+     */
+    public boolean esPagoValido() {
+        if (totalPagado > 0) {
+            System.out.println("El pago es valido");
+            return true;
+        } else {
+            System.out.println("El pago no es valido");
+            return false;
+        }
+    }
+
 }
