@@ -58,7 +58,7 @@ public class Paciente {
      * Estados posibles del paciente.
      */
     public enum EstadoPaciente {
-        ACTIVO, INACTIVO
+        SALUDABLE, CRITICO
     }
 
     /**
