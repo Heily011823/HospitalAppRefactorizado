@@ -307,6 +307,12 @@ public class Hospital {
             LocalDate fechaNomina = LocalDate.now();
             Nomina nomina = new Nomina(nombreEmpleado, fechaNomina, sueldo);
             nominas.add(nomina);
+            
+            // Probar los métodos nuevos de la clase Nomina refactorizada. 
+            System.out.println(nomina.generarDetalleNomina());
+            System.out.println(nomina.esPagoValido());
+
+            nominas.add(nomina);
         }
     }
 
