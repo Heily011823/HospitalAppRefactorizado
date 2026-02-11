@@ -164,7 +164,7 @@ public class SistemaCentral {
      * @param cantidad Cantidad a comprar.
      * @throws HospitalEnQuiebraException Si el hospital no tiene presupuesto suficiente.
      */
-    public void realizarCompra(Medicamento medicamento, int cantidad) throws HospitalEnQuiebraException {
+    public void realizarCompra(Medicamento medicamento, int cantidad) throws HospitalEnQuiebraException, PresupuestoNegativoException {
         hospital.comprarMedicamento(medicamento, cantidad);
     }
 
