@@ -13,6 +13,7 @@ import autonoma.hospitalapp.exceptions.PacienteDuplicadoException;
 import autonoma.hospitalapp.models.Enfermedad;
 import autonoma.hospitalapp.models.Medicamento;
 import autonoma.hospitalapp.models.Paciente;
+import autonoma.hospitalapp.models.Paciente.EstadoPaciente;
 import autonoma.hospitalapp.models.SistemaCentral;
 import java.util.ArrayList;
 import javax.swing.ImageIcon;
@@ -376,7 +377,9 @@ public class ActualizarPaciente extends javax.swing.JDialog {
             paciente.setCorreo(correo);
             paciente.setEdad(edad);
             paciente.setTelefono(telefono);
-            paciente.setEstadoPaciente(estadoTexto);
+            EstadoPaciente estado = EstadoPaciente.valueOf(estadoTexto.toUpperCase());
+            paciente.setEstadoPaciente(estado);
+
 
 
             JOptionPane.showMessageDialog(this, "Paciente actualizado exitosamente.");
