@@ -33,7 +33,8 @@ public class MedicamentoGenerico extends Medicamento{
      */
     @Override
     public void calcularPrecioVenta() {
-        setPrecioVenta(getCosto() + (getCosto() * 0.10));
+        double PORCENTAJE_DE_VENTA = 0.10;
+        setPrecioVenta(getCosto() + (getCosto() * PORCENTAJE_DE_VENTA));
     }
     
     /**
