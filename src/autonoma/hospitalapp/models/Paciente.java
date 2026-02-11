@@ -58,7 +58,7 @@ public class Paciente {
      * Estados posibles del paciente.
      */
     public enum EstadoPaciente {
-        ACTIVO, INACTIVO
+        SALUDABLE, CRITICO
     }
 
     /**
@@ -166,29 +166,83 @@ public class Paciente {
     }
 
     /**
-     * Cura una enfermedad del paciente utilizando un medicamento.
-     */
-    public String curarEnfermedad(String enfermedad, Medicamento medicamento)
-            throws CamposObligatoriosException,
-                   PacienteNoEncontradoException,
-                   CaracteresEspecialesException,
-                   MedicamentoNoEncontradoException {
+    * Cura una enfermedad del paciente utilizando un medicamento.
+    */
+   public String curarEnfermedad(String enfermedad, Medicamento medicamento)
+           throws CamposObligatoriosException, PacienteNoEncontradoException,
+                  CaracteresEspecialesException, MedicamentoNoEncontradoException {
 
-        for (Enfermedad e : enfermedades) {
-            if (e.getNombre().equalsIgnoreCase(enfermedad)) {
+       Enfermedad enfermedadEncontrada = buscarEnfermedad(enfermedad);
 
-                if (medicamento.getEnfermedadQueAlivia().equalsIgnoreCase(enfermedad)) {
-                    enfermedades.remove(e);
-                    medicinas.add(medicamento);
-                    return "La enfermedad '" + enfermedad
-                            + "' ha sido curada con el medicamento '"
-                            + medicamento.getNombre() + "'.";
-                } else {
-                    return "El medicamento '" + medicamento.getNombre()
-                            + "' no alivia la enfermedad '" + enfermedad + "'.";
-                }
-            }
-        }
-        return "La enfermedad '" + enfermedad + "' no fue encontrada en el paciente.";
-    }
+       if (enfermedadEncontrada == null) {
+           return construirMensajeNoEncontrada(enfermedad);
+       }
+
+       if (!medicamentoAliviaEnfermedad(medicamento, enfermedad)) {
+           return construirMensajeNoAlivia(medicamento, enfermedad);
+       }
+
+       aplicarTratamiento(enfermedadEncontrada, medicamento);
+       return construirMensajeCurada(enfermedad, medicamento);
+   }
+
+   /**
+    * Busca una enfermedad en la lista del paciente por su nombre.
+    * 
+    * @param nombreEnfermedad Nombre de la enfermedad a buscar.
+    * @return La enfermedad si existe, null si no se encuentra.
+    */
+   private Enfermedad buscarEnfermedad(String nombreEnfermedad) {
+       for (Enfermedad e : enfermedades) {
+           if (e.getNombre().equalsIgnoreCase(nombreEnfermedad)) {
+               return e;
+           }
+       }
+       return null;
+   }
+
+   /**
+    * Verifica si el medicamento alivia la enfermedad indicada.
+    * 
+    * @param medicamento Medicamento a evaluar.
+    * @param enfermedad Nombre de la enfermedad.
+    * @return true si el medicamento la alivia, false en caso contrario.
+    */
+   private boolean medicamentoAliviaEnfermedad(Medicamento medicamento, String enfermedad) {
+       return medicamento.getEnfermedadQueAlivia().equalsIgnoreCase(enfermedad);
+   }
+
+   /**
+    * Aplica el tratamiento:
+    * - Elimina la enfermedad de la lista
+    * - Agrega el medicamento a la lista de medicinas
+    */
+   private void aplicarTratamiento(Enfermedad enfermedad, Medicamento medicamento) {
+       enfermedades.remove(enfermedad);
+       medicinas.add(medicamento);
+   }
+
+   /**
+    * Construye el mensaje cuando la enfermedad fue curada exitosamente.
+    */
+   private String construirMensajeCurada(String enfermedad, Medicamento medicamento) {
+       return "La enfermedad '" + enfermedad + "' ha sido curada con el medicamento '"
+               + medicamento.getNombre() + "'.";
+   }
+
+   /**
+    * Construye el mensaje cuando el medicamento no alivia la enfermedad.
+    */
+   private String construirMensajeNoAlivia(Medicamento medicamento, String enfermedad) {
+       return "El medicamento '" + medicamento.getNombre()
+               + "' no alivia la enfermedad '" + enfermedad + "'.";
+   }
+
+   /**
+    * Construye el mensaje cuando la enfermedad no se encuentra en el paciente.
+    */
+   private String construirMensajeNoEncontrada(String enfermedad) {
+       return "La enfermedad '" + enfermedad + "' no fue encontrada en el paciente.";
+   }
+
 }
