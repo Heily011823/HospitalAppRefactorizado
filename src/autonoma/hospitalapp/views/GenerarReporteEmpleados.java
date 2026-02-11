@@ -39,7 +39,7 @@ public class GenerarReporteEmpleados extends javax.swing.JDialog {
             System.out.println("Imagen no encontrada");
             
         }
-        InformacionEmpleados.setText(reporte.generarReporteEmpleados());
+        InformacionEmpleados.setText(reporte.generarReporteDeEmpleados());
         InformacionEmpleados.setEditable(false);
     }
 

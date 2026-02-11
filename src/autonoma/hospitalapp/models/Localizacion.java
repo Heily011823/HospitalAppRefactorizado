@@ -4,6 +4,7 @@
  */
 package autonoma.hospitalapp.models;
 
+import autonoma.hospitalapp.exceptions.LocalizacionInvalidaException;
 /**
  *
 * @author Heily Yohana Rios Ayala <heilyy.riosa@autonoma.edu.co>
@@ -11,72 +12,46 @@ package autonoma.hospitalapp.models;
  * @version 1.0.0
  * @see autonoma.hospitalapp.models.Localizacion
  */
+
+
+
 public class Localizacion {
-    
-    /**
-     * Latitud de la localización.
-     */
-    private double latitud;
 
-    /**
-     * Longitud de la localización.
-     */
-    private double longitud;
+    private final double latitud;
+    private final double longitud;
 
-    /**
-     * Constructor para crear una localización con valores específicos de latitud y longitud.
-     * 
-     * @param latitud Latitud geográfica.
-     * @param longitud Longitud geográfica.
-     */
     public Localizacion(double latitud, double longitud) {
+        validar(latitud, longitud);
         this.latitud = latitud;
         this.longitud = longitud;
     }
 
-    /**
-     * Obtiene la latitud de la localización.
-     * 
-     * @return Latitud.
-     */
+    private void validar(double lat, double lon) {
+        if (lat < -90 || lat > 90) {
+            throw new LocalizacionInvalidaException("Latitud fuera de rango: " + lat);
+        }
+        if (lon < -180 || lon > 180) {
+            throw new LocalizacionInvalidaException("Longitud fuera de rango: " + lon);
+        }
+    }
+
     public double getLatitud() {
         return latitud;
     }
 
-    /**
-     * Establece la latitud de la localización.
-     * 
-     * @param latitud Nueva latitud.
-     */
-    public void setLatitud(double latitud) {
-        this.latitud = latitud;
-    }
-
-    /**
-     * Obtiene la longitud de la localización.
-     * 
-     * @return Longitud.
-     */
     public double getLongitud() {
         return longitud;
     }
 
-    /**
-     * Establece la longitud de la localización.
-     * 
-     * @param longitud Nueva longitud.
-     */
-    public void setLongitud(double longitud) {
-        this.longitud = longitud;
+    public double distancia(Localizacion otra) {
+        return Math.sqrt(
+            Math.pow(this.latitud - otra.latitud, 2) +
+            Math.pow(this.longitud - otra.longitud, 2)
+        );
     }
-    
-    /**
-     *  Devuelve una representación en forma de texto de la información de la localización.
-     * 
-     * @return Rotorna la información de la localización como cadena de texto.
-     */
+
     @Override
     public String toString() {
-        return "\n" + "Latitud: " + latitud + "\n" + "Longitud: " + longitud;
+        return "\nLatitud: " + latitud + "\nLongitud: " + longitud;
     }
 }

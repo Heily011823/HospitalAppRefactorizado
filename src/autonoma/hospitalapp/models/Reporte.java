@@ -95,25 +95,25 @@ public class Reporte {
      * el reporte indicará que no hay registros.
      * @throws IOException Si ocurre un error al escribir o leer el archivo de texto.
      */
-    public String generarReporteEmpleados() throws IOException{
-        ArrayList<String> archivo3 = new ArrayList<>();
+    public String generarReporteDeEmpleados() throws IOException{
+        ArrayList<String> lineasReporteEmpleados = new ArrayList<>();
     
-        archivo3.add("===================== REPORTE DE EMPLEADOS =============================");
+       lineasReporteEmpleados.add("===================== REPORTE DE EMPLEADOS =============================");
 
         if (empleados == null || empleados.isEmpty()) {
-            archivo3.add("No hay empleados registrados.");
+            lineasReporteEmpleados.add("No hay empleados registrados.");
         } else {
             for (Empleado e : empleados) {
-                archivo3.add("Nombre: " + e.getNombre());
-                archivo3.add("Documento: " + e.getDocumento());
-                archivo3.add("Edad: " + e.getEdad());
-                archivo3.add("Salario Base: $" + e.getSalarioBase());
-                archivo3.add("------------------------------------");
+                lineasReporteEmpleados.add("Nombre: " + e.getNombre());
+                lineasReporteEmpleados.add("Documento: " + e.getDocumento());
+                lineasReporteEmpleados.add("Edad: " + e.getEdad());
+                lineasReporteEmpleados.add("Salario Base: $" + e.getSalarioBase());
+                lineasReporteEmpleados.add("------------------------------------");
             }
         }
 
         Escritor escritor = new EscritorArchivoTextoPlano("reporteEmpleados.txt");
-        escritor.escribir(archivo3);
+        escritor.escribir(lineasReporteEmpleados);
         
         LectorArchivoTextoPlano lector = new LectorArchivoTextoPlano();
         ArrayList<String> lineas = lector.leer("reporteEmpleados.txt");
@@ -134,46 +134,46 @@ public class Reporte {
      * el reporte indicará que no hay registros.
      * @throws IOException Si ocurre un error al escribir o leer el archivo de texto.
      */
-    public String generarReportePacientes() throws IOException{
-        ArrayList<String> archivo = new ArrayList<>();
+    public String generarReporteDePacientes() throws IOException{
+        ArrayList<String> lineasReportePacientes= new ArrayList<>();
     
-        archivo.add("========================== REPORTE DE PACIENTES ======================");
+        lineasReportePacientes.add("========================== REPORTE DE PACIENTES ======================");
 
         if (pacientes == null || pacientes.isEmpty()) {
-            archivo.add("No hay pacientes registrados.");
+            lineasReportePacientes.add("No hay pacientes registrados.");
         } else {
             for (Paciente p : pacientes) {
-                archivo.add("Nombre: " + p.getNombre());
-                archivo.add("Documento: " + p.getDocumento());
-                archivo.add("Edad: " + p.getEdad());
-                archivo.add("Correo: " + p.getCorreo());
-                archivo.add("Teléfono: " + p.getTelefono());
-                archivo.add("Estado: " + p.getEstadoPaciente());
+                lineasReportePacientes.add("Nombre: " + p.getNombre());
+                lineasReportePacientes.add("Documento: " + p.getDocumento());
+                lineasReportePacientes.add("Edad: " + p.getEdad());
+                lineasReportePacientes.add("Correo: " + p.getCorreo());
+                lineasReportePacientes.add("Teléfono: " + p.getTelefono());
+                lineasReportePacientes.add("Estado: " + p.getEstadoPaciente());
             
-                archivo.add("Enfermedades:");
+              lineasReportePacientes.add("Enfermedades:");
                 if (p.getEnfermedades().isEmpty()) {
-                    archivo.add("  - No registra enfermedades.");
+                    lineasReportePacientes.add("  - No registra enfermedades.");
                 } else {
                     for (Enfermedad e : p.getEnfermedades()) {
-                        archivo.add("  - " + e.getNombre());
+                        lineasReportePacientes.add("  - " + e.getNombre());
                     }
                 }
             
-                archivo.add("Medicamentos:");
+                lineasReportePacientes.add("Medicamentos:");
                 if (p.getMedicinas().isEmpty()) {
-                    archivo.add("  - No tiene medicamentos asignados.");
+                   lineasReportePacientes.add("  - No tiene medicamentos asignados.");
                 } else {
                     for (Medicamento m : p.getMedicinas()) {
-                        archivo.add("  - " + m.getNombre());
+                       lineasReportePacientes.add("  - " + m.getNombre());
                     }
                 }
             
-                archivo.add("------------------------------------");
+               lineasReportePacientes.add("------------------------------------");
             }
         }
 
         Escritor escritor = new EscritorArchivoTextoPlano("reportePacientes.txt");
-        escritor.escribir(archivo);
+        escritor.escribir(lineasReportePacientes);
         
         LectorArchivoTextoPlano lector = new LectorArchivoTextoPlano();
         ArrayList<String> lineas = lector.leer("reportePacientes.txt");
@@ -194,42 +194,42 @@ public class Reporte {
      * el reporte indicará que no hay registros.
      * @throws IOException Si ocurre un error al escribir o leer el archivo de texto.
      */
-    public String generarReporteFarmacia() throws IOException{
-        ArrayList<String> archivo2 = new ArrayList<>();
+    public String generarReporteDeFarmacia() throws IOException{
+        ArrayList<String> lineasReporteFarmacia = new ArrayList<>();
     
-        archivo2.add("======================== REPORTE DE FARMACIA ===========================");
+        lineasReporteFarmacia.add("======================== REPORTE DE FARMACIA ===========================");
 
         if (farmacia == null) {
-            archivo2.add("No hay información de farmacia registrada.");
+            lineasReporteFarmacia .add("No hay información de farmacia registrada.");
         } else {
             Hospital h = farmacia.getHospital();
             if (h == null) {
-                archivo2.add("No se pudo obtener la información del hospital.");
+                lineasReporteFarmacia.add("No se pudo obtener la información del hospital.");
             } else {
-                archivo2.add(String.format("Hospital Asociado: %s", h.getNombre()));
-                archivo2.add(String.format("Dirección del Hospital: %s", h.getDireccion()));
+                lineasReporteFarmacia.add(String.format("Hospital Asociado: %s", h.getNombre()));
+                lineasReporteFarmacia.add(String.format("Dirección del Hospital: %s", h.getDireccion()));
 
-                archivo2.add("Inventario de Medicamentos:");
+                lineasReporteFarmacia.add("Inventario de Medicamentos:");
 
                 ArrayList<Medicamento> medicamentos = farmacia.getInventario().getMedicamentos();
                 if (medicamentos == null || medicamentos.isEmpty()) {
-                    archivo2.add("No hay medicamentos en el inventario.");
+                    lineasReporteFarmacia.add("No hay medicamentos en el inventario.");
                 } else {
                     for (Medicamento m : medicamentos) {
-                        archivo2.add(String.format("  - Nombre: %s", m.getNombre()));
-                        archivo2.add(String.format("  - Descripción: %s", m.getDescripcion()));
-                        archivo2.add(String.format("  - Cantidad: %s", m.getCantidad()));
-                        archivo2.add(String.format("  - Precio: %s", m.getPrecioVenta()));
-                        archivo2.add(String.format("  - Enfermedad que alivia: %s", m.getEnfermedadQueAlivia()));
+                        lineasReporteFarmacia.add(String.format("  - Nombre: %s", m.getNombre()));
+                       lineasReporteFarmacia.add(String.format("  - Descripción: %s", m.getDescripcion()));
+                        lineasReporteFarmacia .add(String.format("  - Cantidad: %s", m.getCantidad()));
+                      lineasReporteFarmacia.add(String.format("  - Precio: %s", m.getPrecioVenta()));
+                       lineasReporteFarmacia.add(String.format("  - Enfermedad que alivia: %s", m.getEnfermedadQueAlivia()));
                     }
                 }
 
-                archivo2.add("------------------------------------");
+                lineasReporteFarmacia.add("------------------------------------");
             }
         }
 
         Escritor escritor = new EscritorArchivoTextoPlano("reporteFarmacia.txt");
-        escritor.escribir(archivo2);
+        escritor.escribir(lineasReporteFarmacia );
         
         LectorArchivoTextoPlano lector = new LectorArchivoTextoPlano();
         ArrayList<String> lineas = lector.leer("reporteFarmacia.txt");

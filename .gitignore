@@ -1,0 +1,15 @@
+# Carpetas compiladas
+build/
+dist/
+
+# Archivos compilados Java
+*.class
+
+# NetBeans archivos privados
+nbproject/private/
+
+# Logs
+*.log
+
+# Archivos temporales
+*.tmp

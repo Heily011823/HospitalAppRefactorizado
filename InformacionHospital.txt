@@ -4,7 +4,7 @@ Dirección: Calle 123
 Teléfono: 3001234567
 
 Gerente: 
-Nombre: Laura Pérez
+Nombre: Laura Puertaaaa
 Documento: 123456789
 Edad: 40
 Carrera: Administración Hospitalaria

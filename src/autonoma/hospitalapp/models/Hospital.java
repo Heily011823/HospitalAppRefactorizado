@@ -7,6 +7,7 @@ package autonoma.hospitalapp.models;
 import autonoma.hospitalapp.exceptions.HospitalEnQuiebraException;
 import autonoma.hospitalapp.exceptions.MedicamentoNoEncontradoException;
 import autonoma.hospitalapp.exceptions.PacienteNoEncontradoException;
+import autonoma.hospitalapp.exceptions.PresupuestoNegativoException;
 import java.io.IOException;
 import java.time.LocalDate;
 import java.util.ArrayList;
@@ -307,6 +308,12 @@ public class Hospital {
             LocalDate fechaNomina = LocalDate.now();
             Nomina nomina = new Nomina(nombreEmpleado, fechaNomina, sueldo);
             nominas.add(nomina);
+            
+            // Probar los métodos nuevos de la clase Nomina refactorizada. 
+            System.out.println(nomina.generarDetalleNomina());
+            System.out.println(nomina.esPagoValido());
+
+            nominas.add(nomina);
         }
     }
 
@@ -324,19 +331,18 @@ public class Hospital {
         }
     }
 
-    /**
-    * Descuenta un valor del presupuesto del hospital.
-    *
-    * @param valor El valor a descontar.
-    */
-    public void descontarDelPresupuesto(double valor) {
-        if (presupuesto >= valor) {
-            presupuesto -= valor;
-        } else {
-            System.out.println("No hay suficiente presupuesto.");
-        }
+   /**
+ * @param monto El valor económico a deducir del presupuesto actual.
+ * @throws PresupuestoNegativoException Si el monto a descontar es mayor al presupuesto 
+ * actual, provocando el estado de quiebra.
+ */
+public void descontarDelPresupuesto(double monto) throws PresupuestoNegativoException {
+    if ((this.presupuesto - monto) < 0) {
+        this.estadoHospital = false; // El hospital entra en quiebra
+        throw new PresupuestoNegativoException();
     }
-
+    this.presupuesto -= monto;
+}
     /**
     * Devuelve una representación textual del estado del hospital.
     *
@@ -421,28 +427,37 @@ public class Hospital {
     }
 
     /**
-     * Guarda la información del hospital en un archivo de texto llamado "InformacionHospital.txt".
-     * @throws IOException Si ocurre un error al escribir en el archivo.
+     * Guarda la información general del hospital en un archivo de texto.
+     * @throws IOException Lanza esta excepción ocurre un error al escribir el archivo
      */
     public void guardarInformacion() throws IOException {
+        ArrayList<String> contenido = construirInformacionHospital();
+        EscritorArchivoTextoPlano escritor =
+            new EscritorArchivoTextoPlano("InformacionHospital.txt");
+        escritor.escribir(contenido);
+    }
 
+    /**
+     * Construye la información general del hospital en un archivo de texto.
+     * @return Retorna una lista de lineas del archivo con la información del hospital.
+     */
+    private ArrayList<String> construirInformacionHospital() {
         ArrayList<String> contenido = new ArrayList<>();
 
         contenido.add("============= INFORMACIÓN DEL HOSPITAL =====================");
         contenido.add("Nombre: " + getNombre());
         contenido.add("Dirección: " + getDireccion());
-        contenido.add("Teléfono: " + getTelefono() + "\n");
-        contenido.add("Gerente: " + getGerente().toString());
+        contenido.add("Teléfono: " + getTelefono());
+        contenido.add("Gerente: " + getGerente());
         contenido.add("Logo: " + getLogo());
-        contenido.add(String.format("Presupuesto: $%.2f", getPresupuesto()));
-        contenido.add(String.format("Meta de Ventas Anual: $%.2f", getMetaVentasAnual()));
+        contenido.add("Presupuesto: " + getPresupuesto());
+        contenido.add("Meta de Ventas Anual: " + getMetaVentasAnual());
         contenido.add("Fecha de Fundación: " + getFechaFundacion());
-        contenido.add("Estado: " + (isEstadoHospital() ? "Activo" : "Inactivo"));
-        contenido.add("\n" + "Localización: " + getLocalizacion()); 
+        contenido.add("Estado: " + visualizarEstado());
+        contenido.add("Localización: " + getLocalizacion());
         contenido.add("================================================");
 
-        EscritorArchivoTextoPlano escritor = new EscritorArchivoTextoPlano("InformacionHospital.txt");
-        escritor.escribir(contenido);
+        return contenido;
     }
     
     /**
