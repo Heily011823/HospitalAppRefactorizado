@@ -13,6 +13,7 @@ import autonoma.hospitalapp.exceptions.HospitalEnQuiebraException;
 import autonoma.hospitalapp.exceptions.MedicamentoNoEncontradoException;
 import autonoma.hospitalapp.exceptions.PacienteDuplicadoException;
 import autonoma.hospitalapp.exceptions.PacienteNoEncontradoException;
+import autonoma.hospitalapp.exceptions.PresupuestoNegativoException;
 import java.util.ArrayList;
 
 /**
@@ -208,7 +209,7 @@ public class SistemaCentral {
      * 
      * @throws HospitalEnQuiebraException Si el presupuesto es insuficiente o el hospital está en quiebra.
      */
-    public void generarNomina() throws HospitalEnQuiebraException {
+    public void generarNomina() throws HospitalEnQuiebraException, PresupuestoNegativoException {
         if (!hospital.isEstadoHospital()) {
             throw new HospitalEnQuiebraException();
         }

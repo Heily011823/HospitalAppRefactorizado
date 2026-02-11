@@ -2,6 +2,41 @@
 <project-private xmlns="http://www.netbeans.org/ns/project-private/1">
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
-        <group/>
+        <group>
+            <file>file:/C:/Users/USUARIO/HospitalAppRefactorizado/src/autonoma/hospitalapp/models/LectorArchivoTextoPlano.java</file>
+            <file>file:/C:/Users/USUARIO/HospitalAppRefactorizado/src/autonoma/hospitalapp/models/Lector.java</file>
+            <file>file:/C:/Users/USUARIO/HospitalAppRefactorizado/src/autonoma/hospitalapp/exceptions/MedicamentoNoEncontradoException.java</file>
+            <file>file:/C:/Users/USUARIO/HospitalAppRefactorizado/src/autonoma/hospitalapp/models/Medicamento.java</file>
+            <file>file:/C:/Users/USUARIO/HospitalAppRefactorizado/src/autonoma/hospitalapp/models/EscritorArchivoTextoPlano.java</file>
+            <file>file:/C:/Users/USUARIO/HospitalAppRefactorizado/src/autonoma/hospitalapp/models/Hospital.java</file>
+            <file>file:/C:/Users/USUARIO/HospitalAppRefactorizado/src/autonoma/hospitalapp/exceptions/PacienteDuplicadoException.java</file>
+            <file>file:/C:/Users/USUARIO/HospitalAppRefactorizado/src/autonoma/hospitalapp/models/Gerente.java</file>
+            <file>file:/C:/Users/USUARIO/HospitalAppRefactorizado/src/autonoma/hospitalapp/models/Farmacia.java</file>
+            <file>file:/C:/Users/USUARIO/HospitalAppRefactorizado/src/autonoma/hospitalapp/exceptions/MedicamentoDuplicadoException.java</file>
+            <file>file:/C:/Users/USUARIO/HospitalAppRefactorizado/src/autonoma/hospitalapp/models/Empleado.java</file>
+            <file>file:/C:/Users/USUARIO/HospitalAppRefactorizado/src/autonoma/hospitalapp/exceptions/CaracteresEspecialesException.java</file>
+            <file>file:/C:/Users/USUARIO/HospitalAppRefactorizado/src/autonoma/hospitalapp/models/Paciente.java</file>
+            <file>file:/C:/Users/USUARIO/HospitalAppRefactorizado/src/autonoma/hospitalapp/exceptions/PacienteNoEncontradoException.java</file>
+            <file>file:/C:/Users/USUARIO/HospitalAppRefactorizado/src/autonoma/hospitalapp/models/Enfermedad.java</file>
+            <file>file:/C:/Users/USUARIO/HospitalAppRefactorizado/src/autonoma/hospitalapp/exceptions/EnfermedadDuplicadaException.java</file>
+            <file>file:/C:/Users/USUARIO/HospitalAppRefactorizado/src/autonoma/hospitalapp/models/EmpleadoSalud.java</file>
+            <file>file:/C:/Users/USUARIO/HospitalAppRefactorizado/src/autonoma/hospitalapp/exceptions/EnfermedadNoEncontradaException.java</file>
+            <file>file:/C:/Users/USUARIO/HospitalAppRefactorizado/src/autonoma/hospitalapp/exceptions/HospitalEnQuiebraException.java</file>
+            <file>file:/C:/Users/USUARIO/HospitalAppRefactorizado/src/autonoma/hospitalapp/models/EmpleadoOperativo.java</file>
+            <file>file:/C:/Users/USUARIO/HospitalAppRefactorizado/src/autonoma/hospitalapp/models/MedicamentoGenerico.java</file>
+            <file>file:/C:/Users/USUARIO/HospitalAppRefactorizado/src/autonoma/hospitalapp/models/Escritor.java</file>
+            <file>file:/C:/Users/USUARIO/HospitalAppRefactorizado/src/autonoma/hospitalapp/models/Inventario.java</file>
+            <file>file:/C:/Users/USUARIO/HospitalAppRefactorizado/src/autonoma/hospitalapp/models/Nomina.java</file>
+            <file>file:/C:/Users/USUARIO/HospitalAppRefactorizado/src/autonoma/hospitalapp/exceptions/CamposObligatoriosException.java</file>
+            <file>file:/C:/Users/USUARIO/HospitalAppRefactorizado/src/autonoma/hospitalapp/models/MedicamentoMarca.java</file>
+            <file>file:/C:/Users/USUARIO/HospitalAppRefactorizado/src/autonoma/hospitalapp/models/Reporte.java</file>
+            <file>file:/C:/Users/USUARIO/HospitalAppRefactorizado/src/autonoma/hospitalapp/exceptions/EstadoDePacienteInvalidoException.java</file>
+            <file>file:/C:/Users/USUARIO/HospitalAppRefactorizado/src/autonoma/hospitalapp/exceptions/DatoInvalidoException.java</file>
+            <file>file:/C:/Users/USUARIO/HospitalAppRefactorizado/src/autonoma/hospitalapp/exceptions/CorreoInvalidoException.java</file>
+            <file>file:/C:/Users/USUARIO/HospitalAppRefactorizado/src/autonoma/hospitalapp/models/Localizacion.java</file>
+            <file>file:/C:/Users/USUARIO/HospitalAppRefactorizado/src/autonoma/hospitalapp/main/HospitalApp.java</file>
+            <file>file:/C:/Users/USUARIO/HospitalAppRefactorizado/src/autonoma/hospitalapp/models/SistemaCentral.java</file>
+            <file>file:/C:/Users/USUARIO/HospitalAppRefactorizado/src/autonoma/hospitalapp/exceptions/PresupuestoNegativoException.java</file>
+        </group>
     </open-files>
 </project-private>
